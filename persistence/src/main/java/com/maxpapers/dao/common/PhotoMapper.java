@@ -1,6 +1,7 @@
-package com.maxpapers.dao;
+package com.maxpapers.dao.common;
 
 import com.maxpapers.common.Photo;
+import com.maxpapers.common.Theme;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
@@ -15,6 +16,6 @@ public class PhotoMapper implements RowMapper<Photo> {
         String theme = resultSet.getString("theme");
         String tags = resultSet.getString("tags");
         byte[] bytes = resultSet.getBytes("bytes");
-        return null;
+        return Photo.ofEntry(id, title, Theme.valueOf(theme), tags, bytes);
     }
 }

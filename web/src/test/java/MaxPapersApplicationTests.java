@@ -1,10 +1,9 @@
-import org.junit.jupiter.api.Test;
+
 
 //@SpringBootTest
-class MaxPapersApplicationTests {
-
-	@Test
-	void contextLoads() {
-	}
-
+//@RunWith(SpringRunner.class)
+public class MaxPapersApplicationTests {
+//    @Test
+//    public void name() {
+//    }
 }

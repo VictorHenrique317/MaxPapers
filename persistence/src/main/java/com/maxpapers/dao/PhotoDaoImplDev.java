@@ -15,19 +15,19 @@ import java.util.List;
 
 @Slf4j
 @Repository
-@Profile("prod")
-// This class is used to fetch wallpapers in the database
-public class PhotoDaoImpl implements PhotoDao {
+@Profile("dev")
+// This class is used to fetch wallpapers and dump new images into the database (Development only)
+public class PhotoDaoImplDev implements PhotoDao{
     private final JdbcTemplate jdbcTemplate;
 
     @Autowired
-    public PhotoDaoImpl(BasicDataSource dataSource) {
-        this.jdbcTemplate = new JdbcTemplate(dataSource);
+    public PhotoDaoImplDev(BasicDataSource basicDataSource) {
+        this.jdbcTemplate = new JdbcTemplate(basicDataSource);
     }
 
     @PostConstruct
     public void init(){
-        log.info("======== Initializing PhotoDaoImpl");
+        log.info("======== Initializing PhotoDaoImplDev");
     }
 
     @Override
@@ -43,5 +43,11 @@ public class PhotoDaoImpl implements PhotoDao {
     @Override
     public Photo get(int id) {
         return Statements.get(jdbcTemplate, id);
+    }
+
+    public int add(Photo photo){
+        int rows = Statements.add(jdbcTemplate, photo);
+        log.info("Added {} entry to the database", rows);
+        return rows;
     }
 }
