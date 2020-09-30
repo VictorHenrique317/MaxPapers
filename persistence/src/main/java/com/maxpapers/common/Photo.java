@@ -2,6 +2,7 @@ package com.maxpapers.common;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NonNull;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -34,12 +35,15 @@ public final class Photo {
     }
 
     // Used to instantiate images from a file
-    public static Photo ofFile(String title, Theme theme, String tags, byte[] bytes){
+    public static Photo ofFile(@NonNull String title,@NonNull Theme theme,
+                               @NonNull String tags,@NonNull byte[] bytes){
         return new Photo(title, theme.toString(), tags, bytes);
     }
 
     // Used to instantiate images from the database
-    public static Photo ofEntry(int id, String title, Theme theme, String tags, byte[] bytes){
+    public static Photo ofEntry(int id,@NonNull String title,@NonNull Theme theme,
+                                       @NonNull String tags,@NonNull byte[] bytes){
+        if (id <= 0) throw new IllegalArgumentException("id cannot be less than 1");
         return new Photo(id, title, theme.toString(), tags, bytes);
     }
 
@@ -66,6 +70,7 @@ public final class Photo {
     private final class Tags{
         private final String tags;
 
+        @NonNull
         public Tags(String tags) {
             this.tags = tags;
         }

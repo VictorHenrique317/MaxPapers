@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-@Profile("prod")
-public class PhotoServiceImpl implements PhotoService{
+@Profile("!dev")
+public class PhotoServiceImpl implements PhotoService {
     private final PhotoDao photoDao;
 
     @Autowired
@@ -32,5 +32,10 @@ public class PhotoServiceImpl implements PhotoService{
     @Override
     public Photo get(int id){
         return photoDao.get(id);
+    }
+
+    @Override
+    public int getEntryCount() {
+        return photoDao.getEntryCount();
     }
 }

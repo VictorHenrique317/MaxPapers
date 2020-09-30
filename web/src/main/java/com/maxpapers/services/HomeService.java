@@ -1,13 +1,11 @@
-package com.maxpapers.dao;
+package com.maxpapers.services;
 
 import com.maxpapers.common.Photo;
 import com.maxpapers.common.Theme;
 
 import java.util.List;
 
-public interface PhotoDao {
-    List<Photo> query(String query);
+public interface HomeService {
+    List<Photo> getHomePagePhotos();
     List<Photo> queryByTheme(Theme theme);
-    Photo get(int id);
-    int getEntryCount();
 }

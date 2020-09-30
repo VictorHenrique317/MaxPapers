@@ -9,4 +9,5 @@ public interface PhotoService {
     List<Photo> query(String query);
     List<Photo> queryByTheme(Theme theme);
     Photo get(int id);
+    int getEntryCount();
 }

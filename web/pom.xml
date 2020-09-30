@@ -42,7 +42,6 @@
             <groupId>com.maxpapers</groupId>
             <artifactId>persistence</artifactId>
             <version>0.0.1-SNAPSHOT</version>
-            <scope>test</scope>
         </dependency>
         <!--================================================ PARENT ================================================-->
     </dependencies>

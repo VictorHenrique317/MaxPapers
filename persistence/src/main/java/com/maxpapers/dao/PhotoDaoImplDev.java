@@ -50,4 +50,9 @@ public class PhotoDaoImplDev implements PhotoDao{
         log.info("Added {} entry to the database", rows);
         return rows;
     }
+
+    @Override
+    public int getEntryCount() {
+        return Statements.getEntryCount(jdbcTemplate);
+    }
 }

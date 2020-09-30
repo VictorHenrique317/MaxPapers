@@ -15,7 +15,7 @@ import java.util.List;
 
 @Slf4j
 @Repository
-@Profile("prod")
+@Profile("!dev") //prod
 // This class is used to fetch wallpapers in the database
 public class PhotoDaoImpl implements PhotoDao {
     private final JdbcTemplate jdbcTemplate;
@@ -43,5 +43,10 @@ public class PhotoDaoImpl implements PhotoDao {
     @Override
     public Photo get(int id) {
         return Statements.get(jdbcTemplate, id);
+    }
+
+    @Override
+    public int getEntryCount() {
+        return Statements.getEntryCount(jdbcTemplate);
     }
 }
