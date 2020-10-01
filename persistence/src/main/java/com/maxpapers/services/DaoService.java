@@ -5,7 +5,7 @@ import com.maxpapers.common.Theme;
 
 import java.util.List;
 
-public interface PhotoService {
+public interface DaoService {
     List<Photo> query(String query);
     List<Photo> queryByTheme(Theme theme);
     Photo get(int id);

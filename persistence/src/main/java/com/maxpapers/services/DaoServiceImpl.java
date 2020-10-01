@@ -11,11 +11,11 @@ import java.util.List;
 
 @Service
 @Profile("!dev")
-public class PhotoServiceImpl implements PhotoService {
+public class DaoServiceImpl implements DaoService {
     private final PhotoDao photoDao;
 
     @Autowired
-    public PhotoServiceImpl(PhotoDao photoDao) {
+    public DaoServiceImpl(PhotoDao photoDao) {
         this.photoDao = photoDao;
     }
 

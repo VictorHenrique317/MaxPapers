@@ -18,8 +18,12 @@ public class PersistenceConfig{
             @Value("${db.password}") String password,
             @Value("${db.driverClassName}") String driverClassName,
             @Value("${db.url}") String url){
-
         log.info("Instantiating data source");
+//    ){
+//        String username = "root";
+//        String password = "victor190402";
+//        String driverClassName = "com.mysql.cj.jdbc.Driver";
+//        String url  = "jdbc:mysql://localhost:3306/maxpaper_db?useSSL=false";
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setUsername(username);
         dataSource.setPassword(password);
