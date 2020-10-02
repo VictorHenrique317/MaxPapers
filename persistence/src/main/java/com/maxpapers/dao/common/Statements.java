@@ -2,23 +2,30 @@ package com.maxpapers.dao.common;
 
 import com.maxpapers.common.Photo;
 import com.maxpapers.common.Theme;
+import com.maxpapers.utils.Ansi;
+import com.maxpapers.utils.ByteArrayEncoder;
 import lombok.NonNull;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.List;
 
+@Slf4j
 // This class encapsulates query functionality, allowing PhotoDaoImpl and PhotoDaoImplDev to use the same queries
 public final class Statements {
     private static final String QUERY_BY_TAGS = "SELECT * FROM wallpapers WHERE tags LIKE ?";
     private static final String QUERY_BY_THEME = "SELECT * FROM wallpapers WHERE theme = ?";
     private static final String QUERY_BY_ID = "SELECT * FROM wallpapers WHERE id = ?";
-    public static final String INSERT_ENTRY = "INSERT INTO wallpapers(title, theme, tags, bytes) VALUES (?, ?, ?, ?)";
-    public static final String QUERY_ENTRY_COUNT = "SELECT COUNT(*) FROM wallpapers";
+    public static final String INSERT_ENTRY = "INSERT INTO wallpapers" +
+            "(title, theme, tags, bytes, encodedString) VALUES (?, ?, ?, ?, ?)";
+    public static final String QUERY_ENTRY_COUNT = "SELECT COUNT(id) FROM wallpapers";
 
     public static List<Photo> query(@NonNull JdbcTemplate jdbcTemplate, @NonNull String query) {
         query = "%" + query + "%";
+        log.info("{} Executing query with String {}", Ansi.BLUE, query);
         List<Photo> results = jdbcTemplate.query(Statements.QUERY_BY_TAGS, new Object[]{query}, new PhotoMapper());
+        log.info("{} Found {} results", Ansi.BLUE, results.size());
         if (results.isEmpty()) throw new NullPointerException("Empty query list");
         return results;
     }
@@ -45,7 +52,8 @@ public final class Statements {
                 photo.getTitle(),
                 photo.getTheme(),
                 photo.getTagString(),
-                photo.getBytes());
+                photo.getBytes(),
+                photo.getEncodedString());
     }
 
     @NonNull

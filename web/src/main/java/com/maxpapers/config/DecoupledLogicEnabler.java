@@ -10,7 +10,6 @@ import javax.annotation.PostConstruct;
 public class DecoupledLogicEnabler {
     private final SpringResourceTemplateResolver templateResolver;
 
-    @Autowired
     public DecoupledLogicEnabler(SpringResourceTemplateResolver templateResolver) {
         this.templateResolver = templateResolver;
     }

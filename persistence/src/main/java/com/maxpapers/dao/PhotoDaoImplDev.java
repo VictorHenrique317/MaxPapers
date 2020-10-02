@@ -3,9 +3,14 @@ package com.maxpapers.dao;
 import com.maxpapers.common.Photo;
 import com.maxpapers.common.Theme;
 import com.maxpapers.dao.common.Statements;
+import com.maxpapers.utils.Ansi;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.ansi.Ansi8BitColor;
+import org.springframework.boot.ansi.AnsiColor;
+import org.springframework.boot.ansi.AnsiColors;
+import org.springframework.boot.ansi.AnsiStyle;
 import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -45,14 +50,15 @@ public class PhotoDaoImplDev implements PhotoDao{
         return Statements.get(jdbcTemplate, id);
     }
 
-    public int add(Photo photo){
-        int rows = Statements.add(jdbcTemplate, photo);
-        log.info("Added {} entry to the database", rows);
-        return rows;
-    }
-
     @Override
     public int getEntryCount() {
         return Statements.getEntryCount(jdbcTemplate);
+    }
+
+    // Used to insert manually new wallpapers into the database
+    public int add(Photo photo){
+        int rows = Statements.add(jdbcTemplate, photo);
+        log.debug("{} Added {} entry to the database", Ansi.GREEN,rows);
+        return rows;
     }
 }

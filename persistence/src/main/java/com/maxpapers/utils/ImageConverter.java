@@ -1,4 +1,4 @@
-package com.maxpapers.constants;
+package com.maxpapers.utils;
 
 import lombok.NonNull;
 

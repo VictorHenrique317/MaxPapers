@@ -1,0 +1,4 @@
+<thlogic>
+    <attr sel="#wallpaper"
+          th:src="|data:image/jpg;base64,${__${T(com.maxpapers.constants.Attribute).PHOTO}__.encodedString}|"/>
+</thlogic>

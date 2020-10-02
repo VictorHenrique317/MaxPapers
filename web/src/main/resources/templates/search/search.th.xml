@@ -1,0 +1,4 @@
+<thlogic>${}
+    <attr sel="h2" th:text="overwritten"/>
+    <attr sel="#imgContainer" th:replace="~{fragments/image_container :: imageContainerFrag}"/>
+</thlogic>

@@ -16,6 +16,7 @@ public class PhotoMapper implements RowMapper<Photo> {
         String theme = resultSet.getString("theme");
         String tags = resultSet.getString("tags");
         byte[] bytes = resultSet.getBytes("bytes");
-        return Photo.ofEntry(id, title, Theme.valueOf(theme), tags, bytes);
+        String encodedString = resultSet.getString("encodedString");
+        return Photo.ofEntry(id, title, Theme.valueOf(theme), tags, bytes, encodedString);
     }
 }

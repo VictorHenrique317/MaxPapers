@@ -15,36 +15,42 @@ public final class Photo {
     @Getter private String theme;
     private Tags tags;
     @Getter private byte[] bytes;
+    @Getter private String encodedString;
 
     // Used to instantiate images from a file
-    private Photo(String title, String theme, String tags, byte[] bytes) {
-        this.id = id;
-        this.title = title;
-        this.theme = theme;
-        this.tags = new Tags(tags);
-        this.bytes = bytes;
+    private Photo(String title, String theme, String tags, byte[] bytes, String encodedString) {
+        this(0, title, theme, tags, bytes, encodedString);
     }
 
     // Used to instantiate images from the database
-    private Photo(int id, String title, String theme, String tags, byte[] bytes) {
+    private Photo(int id, String title, String theme, String tags, byte[] bytes, String encodedString) {
         this.id = id;
         this.title = title;
         this.theme = theme;
         this.tags = new Tags(tags);
         this.bytes = bytes;
+        this.encodedString = encodedString;
     }
 
     // Used to instantiate images from a file
     public static Photo ofFile(@NonNull String title,@NonNull Theme theme,
-                               @NonNull String tags,@NonNull byte[] bytes){
-        return new Photo(title, theme.toString(), tags, bytes);
+                               @NonNull String tags,@NonNull byte[] bytes, @NonNull String encodedString){
+        return new Photo(title, theme.toString(), tags, bytes, encodedString);
     }
 
     // Used to instantiate images from the database
     public static Photo ofEntry(int id,@NonNull String title,@NonNull Theme theme,
-                                       @NonNull String tags,@NonNull byte[] bytes){
+                                       @NonNull String tags,@NonNull byte[] bytes, @NonNull String base64String){
         if (id <= 0) throw new IllegalArgumentException("id cannot be less than 1");
-        return new Photo(id, title, theme.toString(), tags, bytes);
+        return new Photo(id, title, theme.toString(), tags, bytes, base64String);
+    }
+
+    public List<String> getTagList(){
+        return tags.asList();
+    }
+
+    public String getTagString(){
+        return tags.asString();
     }
 
     @Override
@@ -56,14 +62,6 @@ public final class Photo {
                 ", tags=" + tags +
                 ", bytes=" + Arrays.toString(bytes) +
                 '}';
-    }
-
-    public List<String> getTagList(){
-        return tags.asList();
-    }
-
-    public String getTagString(){
-        return tags.asString();
     }
 
     // Class used to provide the tags in both String and List<String> forms

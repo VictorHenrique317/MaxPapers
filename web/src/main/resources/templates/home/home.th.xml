@@ -1,0 +1,9 @@
+<thlogic>${}
+    <attr sel="h2" th:text="overwritten"/>
+    <attr sel="#imgContainer"
+          th:each="__${T(com.maxpapers.constants.Attribute).PHOTO}__ :
+          ${__${T(com.maxpapers.constants.Attribute).HOME_PAGE_PHOTOS}__}"/>
+    <attr sel="#imgContainer"
+          th:action="|@{__${T(com.maxpapers.constants.Mapping).VIEW}__}?id=${__${T(com.maxpapers.constants.Attribute).PHOTO}__.id}|"/>
+    <attr sel="#wallpaper" th:src="|data:image/jpg;base64,${__${T(com.maxpapers.constants.Attribute).PHOTO}__.encodedString}|"/>
+</thlogic>

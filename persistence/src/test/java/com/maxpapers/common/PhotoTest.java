@@ -15,16 +15,17 @@ public class PhotoTest {
 
     @Test(expected = NullPointerException.class)
     public void photoEntryTest(){
-        Photo photo = Photo.ofEntry(1, null, Theme.Space, "dummy", new byte[]{1});
+        Photo photo = Photo.ofEntry(1, null, Theme.Space, "dummy", new byte[]{1}, "test");
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void photoEntryIdTest(){
-        Photo photo = Photo.ofEntry(0, "dummy", Theme.Space, "dummy", new byte[]{1});
+        Photo photo = Photo.ofEntry(0, "dummy", Theme.Space, "dummy", new byte[]{1}, "test");
     }
 
     @Test(expected = NullPointerException.class)
     public void photoFileTest(){
-        Photo photo = Photo.ofFile("dummy", null, "dummy", new byte[]{1});
+        Photo photo = Photo.ofFile("dummy", null, "dummy", new byte[]{1},
+                "test");
     }
 }
