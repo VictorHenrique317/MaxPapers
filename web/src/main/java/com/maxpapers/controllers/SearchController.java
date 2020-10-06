@@ -28,10 +28,10 @@ public class SearchController {
         this.searchService = searchService;
     }
 
-    @GetMapping(Mapping.SEARCH)
-    public String mainPage(){
-        return View.SEARCH;
-    }
+//    @GetMapping(Mapping.SEARCH)
+//    public String mainPage(){
+//        return View.SEARCH;
+//    }
 
     @PostMapping(Mapping.SEARCH)
     public Callable<String> search(@RequestParam("query") String query, Model model){

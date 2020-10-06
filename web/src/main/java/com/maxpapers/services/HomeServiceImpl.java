@@ -2,6 +2,7 @@ package com.maxpapers.services;
 
 import com.maxpapers.common.Photo;
 import com.maxpapers.common.Theme;
+import com.maxpapers.constants.Attribute;
 import com.maxpapers.utils.Ansi;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,13 +11,8 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 @Slf4j
 @Service
@@ -25,7 +21,8 @@ public class HomeServiceImpl implements HomeService {
     private DaoService daoService;
     private final Random random = new Random();
 
-    @Value("${home.photo.quantity}") private int homePhotoQuantity;
+    @Value("${home.photo.quantity}")
+    private int homePhotoQuantity;
 
     @Autowired
     public HomeServiceImpl(DaoService daoService) {
@@ -34,25 +31,38 @@ public class HomeServiceImpl implements HomeService {
 
     @Async
     @Override
-    public CompletableFuture<List<Photo>> queryByTheme(Theme theme) {
-        return CompletableFuture.completedFuture(daoService.queryByTheme(theme));
+    public CompletableFuture<Map<String, List<Photo>>> queryByTheme(Theme theme) {
+        List<Photo> results = daoService.queryByTheme(theme);
+        int firstHalf = (int) Math.ceil(results.size()/2d); // Bigger if size is odd
+
+        return CompletableFuture.completedFuture(
+                Map.of(Attribute.FIRST_COL_HOME_PHOTOS, results.subList(0, firstHalf),
+                        Attribute.SECOND_COL_HOME_PHOTOS, results.subList(firstHalf, results.size())));
     }
 
     @Async
     @Override
-    public CompletableFuture<List<Photo>> getHomePagePhotos() { // 16 images - 4 columns x 4 rows
+    public CompletableFuture<Map<String, List<Photo>>> getHomePagePhotos() { // 16 images - 2 columns x 8 rows
         int upperBound = daoService.getEntryCount() + 1;
-
+        Set<Integer> randomIndices = new HashSet<>();
         List<Photo> randomPhotos = new ArrayList<>();
+
         for (int i = 1; i <= homePhotoQuantity ; i++){
             int randomIndex = random.nextInt(upperBound);
             if (randomIndex == 0) randomIndex = 1;
             log.debug("{} GOT id {}", Ansi.GREEN, randomIndex);
 
-            Photo randomPhoto = daoService.get(randomIndex);
-            randomPhotos.add(randomPhoto);
-            log.info("{} ADDED {} to the randomPhotos", Ansi.GREEN,randomPhoto.getTitle());
+            if (randomIndices.add(randomIndex)) { // Index wasn't picked already
+                Photo randomPhoto = daoService.get(randomIndex);
+                randomPhotos.add(randomPhoto);
+                log.info("{} ADDED {} to the randomPhotos", Ansi.GREEN, randomPhoto.getTitle());
+            }
         }
-        return CompletableFuture.completedFuture(randomPhotos);
+
+        int firstHalf = (int) Math.ceil(randomPhotos.size()/2d); // Bigger if size is odd
+
+        return CompletableFuture.completedFuture(
+                Map.of(Attribute.FIRST_COL_HOME_PHOTOS, randomPhotos.subList(0, firstHalf),
+                        Attribute.SECOND_COL_HOME_PHOTOS, randomPhotos.subList(firstHalf, randomPhotos.size())));
     }
 }

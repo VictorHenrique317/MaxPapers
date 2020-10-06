@@ -47,7 +47,7 @@ public class StatementsTest {
     public void queryTest() {
         List<Photo> results = Statements.query(jdbcTemplate, "landscape");
         assertThat(results).extracting("id")
-                .contains(6, 13, 26);
+                .contains(5, 12, 25);
 
         results = Statements.query(jdbcTemplate, "sky");
         assertThat(results).extracting("title")
@@ -79,7 +79,7 @@ public class StatementsTest {
 
         test = Statements.get(jdbcTemplate, 15);
         assertThat(test).extracting("title")
-                .isEqualTo("Connecting with the nature");
+                .isEqualTo("Nightmare forest");
     }
 
     @Test(expected = NullPointerException.class)

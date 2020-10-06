@@ -1,9 +1,41 @@
-<thlogic>${}
-    <attr sel="h2" th:text="overwritten"/>
-    <attr sel="#imgContainer"
+<thlogic>
+    <attr sel="link" th:href="@{/css/home.css}"/>
+
+    <!--    =============================== Themes =====================================-->
+    <attr sel="#themeOption" th:each="option : ${T(com.maxpapers.common.Theme).values()}"/>
+    <attr sel="#themeOption" th:value="${option}"/>
+    <attr sel="#themeOption" th:text="${option}"/>
+    <!--    =============================== Themes =====================================-->
+
+    <!--    =============================== Search =====================================-->
+    <attr sel="#searchBar" th:action="@{__${T(com.maxpapers.constants.Mapping).SEARCH}__}"/>
+    <!--    =============================== Search =====================================-->
+
+    <!--    =============================== First Column =====================================-->
+    <attr sel="#firstColumnContainer"
           th:each="__${T(com.maxpapers.constants.Attribute).PHOTO}__ :
-          ${__${T(com.maxpapers.constants.Attribute).HOME_PAGE_PHOTOS}__}"/>
-    <attr sel="#imgContainer"
+          ${__${T(com.maxpapers.constants.Attribute).FIRST_COL_HOME_PHOTOS}__}"/>
+    <attr sel="#firstColumnContainer"
           th:action="|@{__${T(com.maxpapers.constants.Mapping).VIEW}__}?id=${__${T(com.maxpapers.constants.Attribute).PHOTO}__.id}|"/>
-    <attr sel="#wallpaper" th:src="|data:image/jpg;base64,${__${T(com.maxpapers.constants.Attribute).PHOTO}__.encodedString}|"/>
+    <attr sel="#firstColumnContainer"
+          th:id="|firstColumnContainer${__${T(com.maxpapers.constants.Attribute).PHOTO}__.id}|"/>
+
+    <attr sel="#col1Wallpaper"
+          th:src="|data:image/jpg;base64,${__${T(com.maxpapers.constants.Attribute).PHOTO}__.encodedString}|"/>
+    <attr sel="#col1Wallpaper" th:id="|col1Wallpaper${__${T(com.maxpapers.constants.Attribute).PHOTO}__.id}|"/>
+    <!--    =============================== First Column =====================================-->
+
+    <!--    =============================== Second Column =====================================-->
+    <attr sel="#secondColumnContainer"
+          th:each="__${T(com.maxpapers.constants.Attribute).PHOTO}__ :
+          ${__${T(com.maxpapers.constants.Attribute).SECOND_COL_HOME_PHOTOS}__}"/>
+    <attr sel="#secondColumnContainer"
+          th:action="|@{__${T(com.maxpapers.constants.Mapping).VIEW}__}?id=${__${T(com.maxpapers.constants.Attribute).PHOTO}__.id}|"/>
+    <attr sel="#secondColumnContainer"
+          th:id="|secondColumnContainer${__${T(com.maxpapers.constants.Attribute).PHOTO}__.id}|"/>
+
+    <attr sel="#col2Wallpaper"
+          th:src="|data:image/jpg;base64,${__${T(com.maxpapers.constants.Attribute).PHOTO}__.encodedString}|"/>
+    <attr sel="#col2Wallpaper" th:id="|col2Wallpaper${__${T(com.maxpapers.constants.Attribute).PHOTO}__.id}|"/>
+    <!--    =============================== Second Column =====================================-->
 </thlogic>

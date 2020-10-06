@@ -1,13 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
     <title>Title</title>
+    <link href="../../static/css/home.css" rel="stylesheet">
 </head>
 <body>
-    <h2>default</h2>
-    <form id="imgContainer" action="#" method="POST" >
-        <input id="wallpaper" src="#" type="image" width="600px" height="600px" />
-    </form>
+    <header>
+        <h1>MaxPapers</h1>
+        <h2>The best wallpapers</h2>
+    </header>
+    <section>
+        <form action="home" id="themeForm" method="POST">
+            <select name="theme" id="themeSelection" onchange="
+            document.getElementById('themeForm').submit()">
+
+                <option value="" selected disabled hidden>Theme</option>
+                <option value="#" id="themeOption"></option>
+            </select>
+        </form>
+        
+        <form action="#" method="POST" id="searchBar">
+            <input type="text" placeholder="search" name="query">
+        </form>
+    </section>
+    <article>
+        <div id="column1">
+            <form id="firstColumnContainer" action="#" method="POST" class="imageForms">
+                <input id="col1Wallpaper" src="#" type="image"/>
+            </form>
+
+
+            <form id="firstColumnContainer" action="#" method="POST" class="imageForms">
+                <input id="col1Wallpaper" src="1.jpg" type="image"/>
+            </form>
+            <form id="firstColumnContainer" action="#" method="POST" class="imageForms">
+                <input id="col1Wallpaper" src="2.jpg" type="image"/>
+            </form>
+            <form id="firstColumnContainer" action="#" method="POST" class="imageForms">
+                <input id="col1Wallpaper" src="3.jpg" type="image"/>
+            </form>
+            <form id="firstColumnContainer" action="#" method="POST" class="imageForms">
+                <input id="col1Wallpaper" src="4.jpg" type="image"/>
+            </form>
+        </div>
+        
+        <div id="column2">
+            <form id="secondColumnContainer" action="#" method="POST" class="imageForms">
+                <input id="col2Wallpaper" src="#" type="image"/>
+            </form>
+
+            <form id="secondColumnContainer" action="#" method="POST" class="imageForms">
+                <input id="col2Wallpaper" src="1.jpg" type="image"/>
+            </form>
+            <form id="secondColumnContainer" action="#" method="POST" class="imageForms">
+                <input id="col2Wallpaper" src="2.jpg" type="image"/>
+            </form>
+            <form id="secondColumnContainer" action="#" method="POST" class="imageForms">
+                <input id="col2Wallpaper" src="3.jpg" type="image"/>
+            </form>
+            <form id="secondColumnContainer" action="#" method="POST" class="imageForms">
+                <input id="col2Wallpaper" src="4.jpg" type="image"/>
+
+        </div>
+
+       
+    </article>
+    <footer>
+        <h3> Created by Victor Henrique </h3>
+        <ul>
+            <li><a href="https://github.com/VictorHenrique317">Github</a></li>
+            <li><a href="https://www.linkedin.com/in/victorhenrique5800/">LinkedIn</a></li>
+        </ul>
+    </footer>
 </body>
 </html>
