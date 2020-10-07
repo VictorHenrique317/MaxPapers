@@ -1,7 +1,15 @@
 <thlogic>
+    <!--    =============================== Links and resources =====================================-->
     <attr sel="link" th:href="@{/css/home.css}"/>
 
+    <attr sel="#headerImg" th:src="@{/images/maxpapers_logo.png}"/>
+    <attr sel="#gitIcon" th:src="@{/images/github_icon.png}"/>
+    <attr sel="#linkedInIcon" th:src="@{/images/linkedin_icon.png}"/>
+    <!--    =============================== Links and resources =====================================-->
+
     <!--    =============================== Themes =====================================-->
+    <attr sel="#themeForm" th:action="@{__${T(com.maxpapers.constants.Mapping).HOME}__}"/>
+
     <attr sel="#themeOption" th:each="option : ${T(com.maxpapers.common.Theme).values()}"/>
     <attr sel="#themeOption" th:value="${option}"/>
     <attr sel="#themeOption" th:text="${option}"/>
@@ -23,6 +31,10 @@
     <attr sel="#col1Wallpaper"
           th:src="|data:image/jpg;base64,${__${T(com.maxpapers.constants.Attribute).PHOTO}__.encodedString}|"/>
     <attr sel="#col1Wallpaper" th:id="|col1Wallpaper${__${T(com.maxpapers.constants.Attribute).PHOTO}__.id}|"/>
+
+    <attr sel="#col1Label" th:for="|col1Wallpaper${__${T(com.maxpapers.constants.Attribute).PHOTO}__.id}|"/>
+    <attr sel="#col1Label" th:text="${__${T(com.maxpapers.constants.Attribute).PHOTO}__.title}"/>
+    <attr sel="#col1Label" th:id="|col1Label${__${T(com.maxpapers.constants.Attribute).PHOTO}__.id}|"/>
     <!--    =============================== First Column =====================================-->
 
     <!--    =============================== Second Column =====================================-->
@@ -37,5 +49,11 @@
     <attr sel="#col2Wallpaper"
           th:src="|data:image/jpg;base64,${__${T(com.maxpapers.constants.Attribute).PHOTO}__.encodedString}|"/>
     <attr sel="#col2Wallpaper" th:id="|col2Wallpaper${__${T(com.maxpapers.constants.Attribute).PHOTO}__.id}|"/>
+
+    <attr sel="#col2Label" th:for="|col2Wallpaper${__${T(com.maxpapers.constants.Attribute).PHOTO}__.id}|"/>
+    <attr sel="#col2Label" th:text="${__${T(com.maxpapers.constants.Attribute).PHOTO}__.title}"/>
+    <attr sel="#col2Label" th:id="|col2Label${__${T(com.maxpapers.constants.Attribute).PHOTO}__.id}|"/>
     <!--    =============================== Second Column =====================================-->
+
+
 </thlogic>

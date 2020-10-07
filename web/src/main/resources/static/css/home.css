@@ -4,22 +4,33 @@
 }
 
 body{
+    padding-bottom: 0;
     width: 100%;
+    padding-bottom: 150px;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: brown;
+    background: url(../images/background.jpg);
 }
 
 header{
     width: 100%;
-    height: 30vw;
+    height: 20vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: blue;
+    background-color:rgb(18,47,43);
+}
+
+header img{
+    width: 70vw;
+}
+
+header img:hover{
+    cursor: pointer;
 }
 
 header h1{
@@ -37,39 +48,45 @@ header h2{
 
 section{
     width: 100%;
-    height: 1em;
+    height: 1.5em;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     font-size: 30px;
-    background-color: burlywood;
+    background-color:rgb(72, 126, 101);
 }
 
 #themeForm{
-    display: flex;
-    justify-content: center;
     width: 50vw;
-    background-color: darkmagenta;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 #themeSelection{
     width: 60%;
+    height:1.25em;
     font-size: 0.5em;
-    background-color: darkcyan;
+    margin-left: 3em;
+    text-align: center;
 }
 
-#searchForm{
+#searchBar{
     width: 50vw;
+    height: 100%;
     display: flex;
     justify-content: flex-end;
-    background-color: darkgrey;
+    align-items: center;
 }
 
-#searchForm input{
-    width: 70%;
-    margin-right: 1em;
+#searchBar input{
+    width: 80%;
+    height: 1em;
+    margin-right: 3em;
     font-size: 0.5em;
+    text-align: center;
 }
 
 article{
@@ -80,55 +97,150 @@ article{
     justify-content: center;
     align-items: flex-start;
     padding-bottom:2em;
-    background-color: chartreuse;
+    background-color: rgb(206, 219, 212);
 }
 
 #column1{
     width: 50%;
-    background-color: skyblue;
 }
 
 #column2{
     width: 50%;
-    background-color: teal;
 }
 
 .imageForms{
-}
-
-.imageForms input{
-    padding: 1em 0.5em 2.5em 0.5em;
-    width: 38vw;
-
-}
-
-footer{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    margin-bottom: 0;
-    background-color: cyan;
-}
-
-footer h3{
-    width: 70%;
-    background-color: seagreen;
-}
-
-footer ul{
-    width: 30%;
+    padding: 1em 0 0 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: saddlebrown;
+}
+
+.imageForms input{
+    width: 32vw;
+}
+
+.titleLabels{
+    width: 100%;
+    margin-left: 2.5em;
+    font-family:'Times New Roman', Times, serif;
+    font-size: 17px;
+    justify-content: right;
+    text-align: start;
+    color: rgb(18,47,43);
+}
+
+.titleLabels:hover{
+    cursor: pointer;
+    color: rgb(61, 134, 110);
+}
+
+footer{
+    width: 100%;
+    margin-bottom: 0;
+    padding-top: 70px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color:rgb(18,47,43);
+
+    position: absolute;
+    bottom: 0;
+}
+
+footer h3{
+    width: 60%;
+    text-align: center;
+    font-size: 18px;
+    color: white;
+}
+
+footer ul{
+    width: 40%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 2em 0 0 1em;
 }
 
 footer ul li{
+    padding-bottom: 1em;
     list-style: none;
 }
 
-footer ul li a{
-    text-decoration: none;
+footer ul li div{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
+
+footer ul li div:hover{
+    cursor: pointer;
+}
+
+footer ul li div img{
+    width: 1.25em;
+}
+
+footer ul li div a{
+    text-align: center;
+    margin-left: 0.75em;
+    text-decoration: none;
+    color: white;
+}
+
+
+footer ul li div:hover > a{
+    color: rgb(43,118,79);
+}
+
+@media(min-width:800px){
+    body{
+        padding-bottom: 250px;
+    }
+    header{
+        height: 17vw;
+    }
+    header img{
+        width: 40vw;
+    }
+    section{
+        height: 2.5em;
+    }
+    
+    #themeSelection{
+        width: 40%;
+        height:1.2em;
+        margin-left: 6em;
+        font-size: 1.0em;
+    }
+    
+    #searchBar input{
+        width: 50%;
+        margin-right: 6em;
+        height: 1em;
+        font-size: 1em;
+    }
+
+    .titleLabels{
+        font-size: 40px;
+        margin-left: 5em;
+    }
+
+    footer h3{
+        font-size: 40px;
+    }
+
+    footer ul li div img{
+        width: 3.5em;
+    }
+
+    footer ul li div a{
+        font-size: 30px;
+    }
+}
+

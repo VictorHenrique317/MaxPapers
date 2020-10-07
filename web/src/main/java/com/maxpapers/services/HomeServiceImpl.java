@@ -47,7 +47,8 @@ public class HomeServiceImpl implements HomeService {
         Set<Integer> randomIndices = new HashSet<>();
         List<Photo> randomPhotos = new ArrayList<>();
 
-        for (int i = 1; i <= homePhotoQuantity ; i++){
+
+        while (randomIndices.size() != homePhotoQuantity){
             int randomIndex = random.nextInt(upperBound);
             if (randomIndex == 0) randomIndex = 1;
             log.debug("{} GOT id {}", Ansi.GREEN, randomIndex);
@@ -58,7 +59,6 @@ public class HomeServiceImpl implements HomeService {
                 log.info("{} ADDED {} to the randomPhotos", Ansi.GREEN, randomPhoto.getTitle());
             }
         }
-
         int firstHalf = (int) Math.ceil(randomPhotos.size()/2d); // Bigger if size is odd
 
         return CompletableFuture.completedFuture(
