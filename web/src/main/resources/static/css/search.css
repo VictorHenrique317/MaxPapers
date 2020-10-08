@@ -58,23 +58,6 @@ section{
     background-color:rgb(72, 126, 101);
 }
 
-#themeForm{
-    width: 50vw;
-    height: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-#themeSelection{
-    width: 60%;
-    height:1.25em;
-    font-size: 0.5em;
-    padding-left: 0.5em;
-
-    margin-left: 3em;
-    text-align: center;
-}
 
 #searchBar{
     width: 50vw;
@@ -217,17 +200,6 @@ footer ul li div:hover > a{
     }
     section{
         height: 2.5em;
-    }
-    
-    #themeForm{
-        margin-left: 6em;
-        height:auto;
-    }
-
-    #themeSelection{
-        width: 40%;
-        height:auto;
-        font-size: 20px;
     }
 
     #searchBar{

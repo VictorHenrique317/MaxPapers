@@ -5,15 +5,16 @@
 
 body{
     padding-bottom: 0;
+    position: relative;
     width: 100%;
     padding-bottom: 150px;
-    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     background: url(../images/background.jpg);
     background-attachment: fixed;
+
 }
 
 header{
@@ -58,24 +59,6 @@ section{
     background-color:rgb(72, 126, 101);
 }
 
-#themeForm{
-    width: 50vw;
-    height: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-#themeSelection{
-    width: 60%;
-    height:1.25em;
-    font-size: 0.5em;
-    padding-left: 0.5em;
-
-    margin-left: 3em;
-    text-align: center;
-}
-
 #searchBar{
     width: 50vw;
     height: 100%;
@@ -96,6 +79,7 @@ section{
 
 article{
     width: 86%;
+
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -105,41 +89,82 @@ article{
     background-color: rgb(206, 219, 212);
 }
 
-#column1{
-    width: 50%;
-    float: left;
+#currentWallpaperContainer{
+    flex: 1;
+    padding: 0.75em 0 1em 0.75em;
 }
 
-#column2{
-    width: 50%;
-    float: left;
+#currentWallpaperContainer #wallpaper{
+    width: 50vw;
 }
 
-.imageForms{
-    padding: 1em 0 0 0;
+#currentWallpaperContainer #photoTitle{
+    margin-top: 0.5em;
+}
+
+#currentWallpaperContainer #downloadForm{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 }
 
-.imageForms input{
-    width: 40vw;
+#currentWallpaperContainer #downloadForm #downloadButton{
+    width: 8.5em;
+
+    margin:0.5em 0 0 0.0em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    background-color: DodgerBlue;
+    border: none;
+    color: white;
+    padding: 12px 30px;
+    cursor: pointer;
+    font-size: 15px;
 }
 
-.titleLabels{
-    width: 100%;
-    margin-left: 3.5em;
-    font-family: Roboto, Arial, sans-serif;
-    font-size: 14px;
-    justify-content: right;
-    text-align: start;
+#currentWallpaperContainer #downloadForm #downloadButton i{
+    margin-right: 0.5em;
+}
+
+
+#relatedWallpapersContainer{
+    flex: 0.5;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 0.75em;
+}
+
+#relatedWallpapersContainer ul {
+    display: flex;
+    flex-direction: column;
+}
+
+#relatedWallpapersContainer ul li{
+    padding-bottom: 1em;
+    list-style: none;
+}
+
+#relatedWallpapersContainer ul li #relatedText{
+    padding-bottom: 0;
+}
+
+#relatedWallpapersContainer ul li label{
+    height: fit-content;
+    display: flex;
+    font-size: 15px;
+}
+
+
+#relatedWallpapersContainer ul li label:hover{
+    cursor: pointer;
     color: rgb(18,47,43);
 }
 
-.titleLabels:hover{
-    cursor: pointer;
-    color: rgb(61, 134, 110);
+.relatedImages{
+    width: 24vw;
 }
 
 footer{
@@ -154,7 +179,7 @@ footer{
     background-color:rgb(18,47,43);
 
     position: absolute;
-    bottom: 0;
+    bottom: 0px;
 }
 
 footer h3{
@@ -166,7 +191,6 @@ footer h3{
 
 footer ul{
     width: 40%;
-    height: 80%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -218,16 +242,9 @@ footer ul li div:hover > a{
     section{
         height: 2.5em;
     }
-    
-    #themeForm{
-        margin-left: 6em;
-        height:auto;
-    }
 
-    #themeSelection{
-        width: 40%;
-        height:auto;
-        font-size: 20px;
+    article{
+        padding-top: 2em;
     }
 
     #searchBar{
@@ -243,18 +260,28 @@ footer ul li div:hover > a{
         font-size: 20px;
     }
 
-    .imageForms input{
-        width: 41vw;
+    #currentWallpaperContainer{
+        padding-left: 2em;
     }
 
-    .titleLabels{
-        height:auto;
-        font-size: 30px;
-        margin-top: 0.25em;
-        margin-bottom: 0.5em;
-        margin-left: 2em;
+    #currentWallpaperContainer #photoTitle{
+        padding-top: 0.5em;
+        font-size: 3.5em;
     }
 
+    #currentWallpaperContainer #downloadForm #downloadButton{
+        width: 40vw;   
+    }
+
+    #relatedWallpapersContainer ul li #relatedText{
+        padding-top: 0.5em;
+        margin-bottom: 2em;
+        font-size: 2em;
+    }
+
+    #relatedWallpapersContainer ul li label{
+        font-size: 1.5em;
+    }
     footer{
         padding: 60px 0 50px 0;
     }

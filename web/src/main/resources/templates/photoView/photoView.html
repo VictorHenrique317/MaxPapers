@@ -1,10 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <title>View</title>
+    <link id="stylesheetLink" href="../../static/css/view.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <img id="wallpaper" src="#"/>
+    <header>
+        <img id="headerImg" src="../../static/images/maxpapers_logo.png" alt="">
+    </header>
+    <section>
+        <form action="#" method="POST" id="searchBar">
+            <input type="text" placeholder="Search" name="query">
+        </form>
+    </section>
+
+    <article>
+        <div id="currentWallpaperContainer">
+            <img id="wallpaper" src="1.jpg" alt="">
+            <h2 id="photoTitle">Title</h2>
+            <form id="downloadForm" action="#">
+                <button type="submit" name="download" id="downloadButton" value="download">
+                    <i class="fa fa-download"></i> 
+                    Download
+                </button>
+            </form>
+        </div>
+        
+        <div id="relatedWallpapersContainer">
+            <ul>
+                <li><h3 id="relatedText">Related wallpapers</h3></li>
+                <li id="relatedWallpaper">
+                    <form id="relatedForm" action="#" method="POST">
+                        <input type="image" id="relatedImage" class="relatedImages" src="1.jpg" >
+                        <label id="relatedTitle">The title title title title title Title</label>
+                    </form>
+                </li>
+<!--                <li id="relatedWallpaper1" >-->
+<!--                    <img class="relatedImages" src="1.jpg" alt="">-->
+<!--                    <h3>Title</h3>-->
+<!--                </li>-->
+<!--                <li id="relatedWallpaper2">-->
+<!--                    <img class="relatedImages" src="1.jpg" alt="">-->
+<!--                    <h3>Title</h3>-->
+<!--                </li>-->
+<!--                <li id="relatedWallpaper3"> -->
+<!--                    <img class="relatedImages"  src="1.jpg" alt="">-->
+<!--                    <h3>Title</h3>-->
+<!--                </li>-->
+<!--                <li id="relatedWallpaper4"> -->
+<!--                    <img class="relatedImages"  src="1.jpg" alt="">-->
+<!--                    <h3>Title</h3>-->
+<!--                </li>-->
+            </ul>
+        </div>
+    </article>
+    <footer>
+        <h3> Created by Victor Henrique </h3>
+        <ul>
+            <li>
+                <div>
+                    <img id="gitIcon" src="../../static/images/github_icon.png" alt="">
+                    <a href="https://github.com/VictorHenrique317">Github</a>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <img id="linkedInIcon" src="../../static/images/linkedin_icon.png" alt="">
+                    <a href="https://www.linkedin.com/in/victorhenrique5800/">LinkedIn</a>
+                </div>
+            </li>
+        </ul>
+    </footer>
 </body>
 </html>

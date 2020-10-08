@@ -11,15 +11,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.w3c.dom.Attr;
 
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.Callable;
 
-//@RequestMapping(value=Mapping.RESULTS)
 @Slf4j
 @Controller
-//@SessionAttributes(Attribute.SEARCH_RESULTS)
 public class SearchController {
     private SearchService searchService;
 
@@ -28,17 +28,21 @@ public class SearchController {
         this.searchService = searchService;
     }
 
-//    @GetMapping(Mapping.SEARCH)
-//    public String mainPage(){
-//        return View.SEARCH;
-//    }
+    @GetMapping(Mapping.SEARCH)
+    public String mainPage(Model model){
+        if (!model.containsAttribute(Attribute.FIRST_COL_SEARCH_RESULTS))return "redirect:" + Mapping.HOME;
+        return View.SEARCH;
+    }
 
     @PostMapping(Mapping.SEARCH)
-    public Callable<String> search(@RequestParam("query") String query, Model model){
+    public Callable<String> search(@RequestParam("query") String query, RedirectAttributes redirectAttributes){
         return ()->{
-            List<Photo> results = searchService.search(query).join();
-            model.addAttribute(Attribute.SEARCH_RESULTS, results);
-            return View.SEARCH;
+            Map<String, List<Photo>> results = searchService.search(query).join();
+            redirectAttributes.addFlashAttribute(Attribute.FIRST_COL_SEARCH_RESULTS,
+                    results.get(Attribute.FIRST_COL_SEARCH_RESULTS));
+            redirectAttributes.addFlashAttribute(Attribute.SECOND_COL_SEARCH_RESULTS,
+                    results.get(Attribute.SECOND_COL_SEARCH_RESULTS));
+            return "redirect:/" + Mapping.SEARCH;
         };
     }
 }

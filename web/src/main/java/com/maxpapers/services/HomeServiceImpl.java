@@ -4,6 +4,7 @@ import com.maxpapers.common.Photo;
 import com.maxpapers.common.Theme;
 import com.maxpapers.constants.Attribute;
 import com.maxpapers.utils.Ansi;
+import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -31,7 +32,7 @@ public class HomeServiceImpl implements HomeService {
 
     @Async
     @Override
-    public CompletableFuture<Map<String, List<Photo>>> queryByTheme(Theme theme) {
+    public CompletableFuture<Map<String, List<Photo>>> queryByTheme(@NonNull Theme theme) {
         List<Photo> results = daoService.queryByTheme(theme);
         int firstHalf = (int) Math.ceil(results.size()/2d); // Bigger if size is odd
 
@@ -45,7 +46,7 @@ public class HomeServiceImpl implements HomeService {
     public CompletableFuture<Map<String, List<Photo>>> getHomePagePhotos() { // 16 images - 2 columns x 8 rows
         int upperBound = daoService.getEntryCount() + 1;
         Set<Integer> randomIndices = new HashSet<>();
-        List<Photo> randomPhotos = new ArrayList<>();
+        List<Photo> randomPhotos = new LinkedList<>();
 
 
         while (randomIndices.size() != homePhotoQuantity){

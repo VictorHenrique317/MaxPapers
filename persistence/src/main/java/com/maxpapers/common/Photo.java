@@ -60,7 +60,6 @@ public final class Photo {
                 ", title='" + title + '\'' +
                 ", theme='" + theme + '\'' +
                 ", tags=" + tags +
-                ", bytes=" + Arrays.toString(bytes) +
                 '}';
     }
 
