@@ -9,5 +9,4 @@ import java.util.concurrent.CompletableFuture;
 public interface SearchService {
     CompletableFuture<Map<String, List<Photo>>> search(String query);
     CompletableFuture<Photo> get(int id);
-    CompletableFuture<List<Photo>> getRelatedPhotosTo(int id, int  amount);
 }

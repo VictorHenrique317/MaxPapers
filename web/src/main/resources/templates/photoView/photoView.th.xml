@@ -3,7 +3,9 @@
     <!--    =============================== Links and resources =====================================-->
     <attr sel="#stylesheetLink" th:href="@{/css/view.css}"/>
 
+    <attr sel="#headerForm" th:action="@{__${T(com.maxpapers.constants.Mapping).HOME}__}"/>
     <attr sel="#headerImg" th:src="@{/images/maxpapers_logo.png}"/>
+
     <attr sel="#gitIcon" th:src="@{/images/github_icon.png}"/>
     <attr sel="#linkedInIcon" th:src="@{/images/linkedin_icon.png}"/>
     <!--    =============================== Links and resources =====================================-->
@@ -13,6 +15,10 @@
     <attr sel="#wallpaper"
           th:src="|data:image/jpg;base64,${__${T(com.maxpapers.constants.Attribute).PHOTO}__.encodedString}|"/>
     <attr sel="#photoTitle" th:text="${__${T(com.maxpapers.constants.Attribute).PHOTO}__.title}"/>
+
+    <attr sel="#downloadForm" th:action="@{__${T(com.maxpapers.constants.Mapping).DOWNLOAD}__}"/>
+
+    <attr sel="#downloadButton" th:value="${__${T(com.maxpapers.constants.Attribute).PHOTO}__.id}"/>
 
     <!--    ======================================= Related Photos =======================================-->
     <attr sel="#relatedWallpaper" th:each="__${T(com.maxpapers.constants.Attribute).RELATED_PHOTO}__ :

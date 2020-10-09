@@ -2,13 +2,15 @@
     <!--    =============================== Links and resources =====================================-->
     <attr sel="link" th:href="@{/css/home.css}"/>
 
+    <attr sel="#headerForm" th:action="@{__${T(com.maxpapers.constants.Mapping).HOME}__}"/>
     <attr sel="#headerImg" th:src="@{/images/maxpapers_logo.png}"/>
+
     <attr sel="#gitIcon" th:src="@{/images/github_icon.png}"/>
     <attr sel="#linkedInIcon" th:src="@{/images/linkedin_icon.png}"/>
     <!--    =============================== Links and resources =====================================-->
 
     <!--    =============================== Themes =====================================-->
-    <attr sel="#themeForm" th:action="@{__${T(com.maxpapers.constants.Mapping).HOME}__}"/>
+    <attr sel="#themeForm" th:action="@{__${T(com.maxpapers.constants.Mapping).HOME_THEME}__}"/>
 
     <attr sel="#themeOption" th:each="option : ${T(com.maxpapers.common.Theme).values()}"/>
     <attr sel="#themeOption" th:value="${option}"/>

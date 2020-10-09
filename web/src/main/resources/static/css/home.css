@@ -26,7 +26,7 @@ header{
     background-color:rgb(18,47,43);
 }
 
-header img{
+header form input{
     width: 70vw;
 }
 
@@ -212,7 +212,7 @@ footer ul li div:hover > a{
     header{
         height: 17vw;
     }
-    header img{
+    header form input{
         width: 40vw;
     }
     section{

@@ -8,10 +8,12 @@
 </head>
 <body>
     <header>
-        <img id="headerImg" src="../../static/images/maxpapers_logo.png" alt="">
+        <form id="headerForm" action="#" method="POST">
+            <input type="image" id="headerImg" src="../../static/images/maxpapers_logo.png" alt="">
+        </form>
     </header>
     <section>
-        <form action="#" method="POST" id="searchBar">
+        <form action="#" method="GET" id="searchBar">
             <input type="text" placeholder="Search" name="query">
         </form>
     </section>
@@ -20,8 +22,8 @@
         <div id="currentWallpaperContainer">
             <img id="wallpaper" src="1.jpg" alt="">
             <h2 id="photoTitle">Title</h2>
-            <form id="downloadForm" action="#">
-                <button type="submit" name="download" id="downloadButton" value="download">
+            <form id="downloadForm" action="#" method="GET">
+                <button type="submit" name="id" id="downloadButton" value="#">
                     <i class="fa fa-download"></i> 
                     Download
                 </button>

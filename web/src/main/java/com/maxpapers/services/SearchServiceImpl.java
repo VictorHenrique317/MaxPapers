@@ -36,22 +36,6 @@ public class SearchServiceImpl implements SearchService {
 
     @Async
     @Override
-    public CompletableFuture<List<Photo>> getRelatedPhotosTo(int id, int amount) {
-        Photo basePhoto = daoService.get(id);
-        List<Photo> relatedPhotos = daoService.queryAllRelated(basePhoto.getTagList());
-        relatedPhotos.remove(basePhoto);
-        if (relatedPhotos.size() < amount){ // There are less photos than the amount specified
-            amount = relatedPhotos.size();
-        }
-        relatedPhotos = relatedPhotos.subList(0, amount);
-        relatedPhotos.forEach(photo -> log.debug("{} Selected related photo with title {}",
-                Ansi.BLUE, photo.getTitle()));
-
-        return CompletableFuture.completedFuture(relatedPhotos);
-    }
-
-    @Async
-    @Override
     public CompletableFuture<Photo> get(int id) {
         return CompletableFuture.completedFuture(daoService.get(id));
     }

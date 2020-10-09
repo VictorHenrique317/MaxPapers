@@ -28,21 +28,34 @@ public class SearchController {
         this.searchService = searchService;
     }
 
-    @GetMapping(Mapping.SEARCH)
-    public String mainPage(Model model){
-        if (!model.containsAttribute(Attribute.FIRST_COL_SEARCH_RESULTS))return "redirect:" + Mapping.HOME;
-        return View.SEARCH;
-    }
+//    @GetMapping(Mapping.SEARCH)
+//    public String mainPage(Model model){
+////        if (!model.containsAttribute(Attribute.FIRST_COL_SEARCH_RESULTS))return "redirect:" + Mapping.HOME;
+//        return View.SEARCH;
+//    }
 
-    @PostMapping(Mapping.SEARCH)
-    public Callable<String> search(@RequestParam("query") String query, RedirectAttributes redirectAttributes){
+//    @PostMapping(Mapping.SEARCH)
+//    public Callable<String> search(@RequestParam("query") String query, RedirectAttributes redirectAttributes){
+//        return ()->{
+//            Map<String, List<Photo>> results = searchService.search(query).join();
+//            redirectAttributes.addFlashAttribute(Attribute.FIRST_COL_SEARCH_RESULTS,
+//                    results.get(Attribute.FIRST_COL_SEARCH_RESULTS));
+//            redirectAttributes.addFlashAttribute(Attribute.SECOND_COL_SEARCH_RESULTS,
+//                    results.get(Attribute.SECOND_COL_SEARCH_RESULTS));
+//            redirectAttributes.addAttribute("query", query);
+//            return "redirect:/" + Mapping.SEARCH;
+//        };
+//    }
+
+    @GetMapping(Mapping.SEARCH)
+    public Callable<String> search(@RequestParam("query") String query, Model model){
         return ()->{
             Map<String, List<Photo>> results = searchService.search(query).join();
-            redirectAttributes.addFlashAttribute(Attribute.FIRST_COL_SEARCH_RESULTS,
+            model.addAttribute(Attribute.FIRST_COL_SEARCH_RESULTS,
                     results.get(Attribute.FIRST_COL_SEARCH_RESULTS));
-            redirectAttributes.addFlashAttribute(Attribute.SECOND_COL_SEARCH_RESULTS,
+            model.addAttribute(Attribute.SECOND_COL_SEARCH_RESULTS,
                     results.get(Attribute.SECOND_COL_SEARCH_RESULTS));
-            return "redirect:/" + Mapping.SEARCH;
+            return View.SEARCH;
         };
     }
 }

@@ -7,10 +7,12 @@
 </head>
 <body>
     <header>
-        <img id="headerImg" src="../../static/images/maxpapers_logo.png" alt="">
+        <form id="headerForm" action="#" method="POST">
+            <input type="image" id="headerImg" src="../../static/images/maxpapers_logo.png" alt="">
+        </form>
     </header>
     <section>
-        <form action="#" id="themeForm" method="POST">
+        <form action="#" id="themeForm" method="GET">
             <select name="theme" id="themeSelection" onchange="
             document.getElementById('themeForm').submit()">
                 <option value="" selected disabled hidden>Theme</option>
@@ -18,7 +20,7 @@
             </select>
         </form>
         
-        <form action="#" method="POST" id="searchBar">
+        <form action="#" method="GET" id="searchBar">
             <input type="text" placeholder="Search" name="query">
         </form>
     </section>

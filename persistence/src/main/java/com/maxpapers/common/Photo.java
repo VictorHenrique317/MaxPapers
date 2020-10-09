@@ -53,6 +53,10 @@ public final class Photo {
         return tags.asString();
     }
 
+    public String getFileName() {
+        return this.title.strip().replace(" ", "_");
+    }
+
     @Override
     public String toString() {
         return "Photo{" +
@@ -62,6 +66,8 @@ public final class Photo {
                 ", tags=" + tags +
                 '}';
     }
+
+
 
     // Class used to provide the tags in both String and List<String> forms
     private final class Tags{
