@@ -26,7 +26,6 @@ public final class Statements {
         log.info("{} Executing query with String {}", Ansi.BLUE, query);
         List<Photo> results = jdbcTemplate.query(Statements.QUERY_BY_TAGS, new Object[]{query}, new PhotoMapper());
         log.info("{} Found {} results", Ansi.BLUE, results.size());
-        if (results.isEmpty()) throw new NullPointerException("Empty query list");
         return results;
     }
 
